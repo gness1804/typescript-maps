@@ -5,7 +5,7 @@ interface Location {
   lng: number;
 }
 
-class User {
+export class User {
   name: string;
   location: Location;
 
