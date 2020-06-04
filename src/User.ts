@@ -1,4 +1,4 @@
-import faker from "faker";
+import * as faker from "faker";
 
 interface Location {
   lat: number;
@@ -6,10 +6,14 @@ interface Location {
 }
 
 class User {
-  // name: string;
-  // location: Location;
+  name: string;
+  location: Location;
 
-  constructor(public name: string, public location: Location) {
-
+  constructor() {
+    this.name = faker.name.firstName();
+    this.location = {
+      lat: parseFloat(faker.address.latitude()),
+      lng: parseFloat(faker.address.longitude()),
+    };
   }
 }
