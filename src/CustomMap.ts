@@ -6,6 +6,7 @@ interface Entity {
     lat: number,
     lng: number
   }
+  message: string;
 }
 
 export class CustomMap {
@@ -22,15 +23,8 @@ export class CustomMap {
   }
 
   private addInfoWindow (marker: google.maps.Marker, entity: Entity): void {
-    // conditionally render the text depending on which type of entity
-    let content = 'I am a marker on the map.';
-    if (entity instanceof User) {
-      content = `Welcome to my living space. I am ${entity.name} and you are right where you need to be. I'm the user.`;
-    } else if (entity instanceof Company) {
-      content = `Welcome to ${entity.name}. It's nice here.`;
-    }
     const infoWindow = new google.maps.InfoWindow({
-      content,
+      content: entity.message,
     });
 
     infoWindow.open(this.googleMap, marker);

@@ -1,10 +1,11 @@
 import * as faker from "faker";
-import { Location } from './types/Location';
+import { Location } from "./types/Location";
 
 export class Company {
   name: string; // companyName in the original course
   catchPhrase: string;
   location: Location;
+  message: string;
 
   constructor() {
     this.name = faker.company.companyName();
@@ -13,5 +14,12 @@ export class Company {
       lat: parseFloat(faker.address.latitude()),
       lng: parseFloat(faker.address.longitude()),
     };
+    this.message = `<div>
+    <h1>Welcome to ${this.name}.</h1>
+
+    <h3>"${this.catchPhrase}"</h3>
+
+    </div>
+    `;
   }
 }
