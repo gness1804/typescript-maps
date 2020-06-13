@@ -1,3 +1,5 @@
+index.html
+
 # Logs
 logs
 *.log
@@ -120,6 +122,4 @@ dist
     .idea/
   # DS Store
     .DS_Store
-
-  index.html
 
