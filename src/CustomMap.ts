@@ -1,3 +1,10 @@
+interface Entity {
+  location: {
+    lat: number,
+    lng: number
+  }
+}
+
 export class CustomMap {
   private googleMap: google.maps.Map;
 
@@ -8,6 +15,16 @@ export class CustomMap {
         lat: 0,
         lng: 0,
       },
+    });
+  }
+
+  addMarker(entity: Entity): void {
+    new google.maps.Marker({
+      map: this.googleMap,
+      position: {
+        lat: entity.location.lat,
+        lng: entity.location.lng,
+      }
     });
   }
 }
