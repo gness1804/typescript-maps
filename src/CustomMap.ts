@@ -1,3 +1,6 @@
+import { Company } from './Company';
+import { User } from './User';
+
 interface Entity {
   location: {
     lat: number,
@@ -18,9 +21,16 @@ export class CustomMap {
     });
   }
 
-  private addInfoWindow (marker: google.maps.Marker): void {
+  private addInfoWindow (marker: google.maps.Marker, entity: Entity): void {
+    // conditionally render the text depending on which type of entity
+    let content = 'I am a marker on the map.';
+    if (entity instanceof User) {
+      content = `Welcome to my living space. I am ${entity.name} and you are right where you need to be. I'm the user.`;
+    } else if (entity instanceof Company) {
+      content = `Welcome to ${entity.name}. It's nice here.`;
+    }
     const infoWindow = new google.maps.InfoWindow({
-      content: 'Hello',
+      content,
     });
 
     infoWindow.open(this.googleMap, marker);
@@ -35,6 +45,6 @@ export class CustomMap {
       }
     });
 
-    marker.addListener('click', () => this.addInfoWindow(marker));
+    marker.addListener('click', () => this.addInfoWindow(marker, entity));
   }
 }
