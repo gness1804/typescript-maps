@@ -1,7 +1,4 @@
-import { Company } from './Company';
-import { User } from './User';
-
-interface Entity {
+export interface Entity {
   location: {
     lat: number,
     lng: number

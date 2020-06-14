@@ -1,7 +1,8 @@
 import * as faker from "faker";
 import { Location } from "./types/Location";
+import { Entity } from './CustomMap';
 
-export class Company {
+export class Company implements Entity {
   name: string; // companyName in the original course
   catchPhrase: string;
   location: Location;

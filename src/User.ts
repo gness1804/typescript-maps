@@ -1,7 +1,8 @@
 import * as faker from "faker";
 import { Location } from './types/Location';
+import { Entity } from './CustomMap';
 
-export class User {
+export class User implements Entity {
   name: string;
   location: Location;
   message: string;
